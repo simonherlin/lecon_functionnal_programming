@@ -1,0 +1,12 @@
+Cour programmation fonctionel
+
+pattern matching
+
+
+let in définie localement des variables dans une expression
+
+
+
+
+Recursivité
+
