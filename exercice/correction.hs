@@ -4,7 +4,7 @@ tour x 0 =
 tour x n = do
   p <- askNumber
   if p == x
-    then putStrLn "Ouai Youpi tu as gagané"
+    then putStrLn "Ouai Youpi tu as gagné"
     else do
       if p < x
         then putStrLn "Le nombre proposé est trop petit"
