@@ -1,12 +1,26 @@
-Cour programmation fonctionel
+ Objectif programmation fonctionnel
 
-pattern matching
+1 Savoir les principes de la programmation fonctionnelle
 
+Paradigmes de programmation
 
-let in définie localement des variables dans une expression
+Langages fonctionnels
 
+    principe : imbrication de fonctions sans effet de bord
+    intérêts : expressivité, découplage du code, réduction des sources d’erreurs, preuve de correction, concurrence…
+    applications : compilateurs, web back-end, script…
+    caractéristiques : fonctions d’ordre supérieur, récursivité, listes, garbage collector…
+    regain d’intérêt : Erlang, XSLT, F#, Scala, C++11
+    langages fonctionnels : type Lisp, type ML
 
-
-
-Recursivité
-
+S’appuie sur des m ́ecanismes mentaux primitifs :
+	Definition par recurrence
+Pas d’effet de bord, pas d’operations d’affectation :
+	En interne, pile pour stocker les informations temporaires
+	(notion d’environnement)
+Calcul consiste en l’ ́evaluation d’une fonction pour  ́eviter toute modification ”d’etats”
+Resultat depend seulement des entrees et non pas de l’etat du programme
+transparence referentielle: remplacement des entr ́ees par des fonctions qui ont les mˆemes valeurs (voir ex. tableau)
+Auto-referent: capable de parler de lui-même
+	Fonction, type de base
+	Construction au cours de l’ex ́ecution
