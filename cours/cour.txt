@@ -24,3 +24,36 @@ transparence referentielle: remplacement des entr ́ees par des fonctions qui on
 Auto-referent: capable de parler de lui-même
 	Fonction, type de base
 	Construction au cours de l’ex ́ecution
+
+
+
+
+
+
+
+
+
+
+Coeur du cours fonction d'ordre supérieur
+Pas de notion de temporairespas de notion d'instruction
+pas de modification
+element de base fonction -> lambda Calcul
+
+composition de fonction
+S'appuie sur des mécanisme mentaux primitifs : Définition par récurrence
+Pas d'effet de bord en intern pule pour stocker les information tmeporaire
+Le résultat dépend seulement des entrées et non pas de l'etat du rpograme
+
+fonction d'ordre 0
+  exemple one = 1
+
+fonction d'ordre 1
+  définie à partir de fonctions d'ordre zéro
+  exemple ajout ordre0 ordre0
+
+
+problème avec les lambda elles n'ont pas de nom on peut donc pas les rappeller (pas recursif)
+
+On peut passer des parametres en fonctione (fonction d'ordre surpérrieur) !!!
+
+On peut définir des fonction anonyme ce qui permet de définir des fonction dont le résultats est une fonction curryfication des fonctions cela peu etre une fermeture une fonciton et un environement d'execution
