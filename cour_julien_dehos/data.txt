@@ -1,0 +1,52 @@
+Programmation fonctionnelle :
+=> Paradigmes de programmation tout comme le procédural et l'objet
+
+    principe : imbrication de fonctions sans effet de bord
+    intérêts : expressivité, découplage du code, réduction des sources d’erreurs, preuve de correction, concurrence…
+    applications : compilateurs, web back-end, script…
+    caractéristiques : fonctions d’ordre supérieur, récursivité, listes, garbage collector…
+    regain d’intérêt : Erlang, XSLT, F#, Scala, C++11
+    langages fonctionnels : type Lisp, type ML
+
+=> Système de type
+
+Type de données
+
+    ensemble des valeurs possibles et opérations autorisées
+    toute donnée ou expression possède un type
+
+Le typage en Haskell
+
+    typage statique fort
+    typage par inférence
+    types polymorphes
+    classes de types
+    types élémentaires de base (Bool, Int, Double…)
+    types composés (tuples, listes…)
+
+Typage faible/fort, statique/dynamique
+
+    typage faible/fort :
+
+            termes souvent utilisés mais pas de définition unanime
+            traduit l’exigence du compilateur lors de la vérification de type
+
+    typage statique/dynamique :
+
+            statique : vérification de type à la compilation
+            dynamique : vérification de type à l’exécution
+
+    principales écoles :
+
+            typage statique fort (haskell, ada…) : fiabilité, performance
+            typage dynamique (lisp, python…) : programmation interactive
+
+=> Listes
+
+    suite d’éléments de même type et de taille quelconque (éventuellement infinie)
+    liste vide : []
+    opérateur de construction : :
+    syntaxe simplifiée : accolades + virgules
+    fonctions prédéfinies : head length null reverse elem take drop...
+    opérateurs : ++  !!
+
