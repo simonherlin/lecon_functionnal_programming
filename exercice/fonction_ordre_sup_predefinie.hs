@@ -39,6 +39,18 @@ any2 :: (a -> Bool) -> [ a ] -> Bool
 any2 _ [] = False
 any2 pred (h:t) = pred h || (any2 pred t)
 
+--fold left
+foldl2 :: (a -> b -> b) -> b -> [a] -> b
+foldl2 _ acc [] = acc
+foldl2 f acc (h:t) = foldl2 f (f h acc) t
+
+-- fold right
+foldr2 :: (a -> b -> b) -> b -> [a] -> b
+foldr2 _ acc [] = acc
+foldr2 f acc (h:t) = f h (foldr2 f acc t)
+
+--
+
 main = do
     print $ filter2 (\x -> mod x 2 == 0) [2, 1, 3, 5, 4]
     print $ dropWhile2 (\x -> mod x 2 == 0) [2, 4, 3, 6]
@@ -47,3 +59,5 @@ main = do
     print $ all2 (\x -> mod x 2 == 0) [2, 4, 5]
     print $ any2 (\x -> mod x 2 == 0) [1, 3, 5]
     print $ any2 (\x -> mod x 2 == 0) [1, 3, 6]
+    print $ foldl2 (+) 0 [1, 2, 3, 4, 5, 6]
+    print $ foldr2 (+) 0 [1, 2, 3, 4, 5, 6]
