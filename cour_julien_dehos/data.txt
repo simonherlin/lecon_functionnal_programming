@@ -50,3 +50,20 @@ Typage faible/fort, statique/dynamique
     fonctions prédéfinies : head length null reverse elem take drop...
     opérateurs : ++  !!
 
+
+Algorithme récursifs :
+Un algorithme récursifs est un algorithme qui fait appels à lui-même dans le corps de sa propre définition
+
+Il existe deux types d’algorithmes récursifs :
+    les algorithmes récursifs qui se terminent :
+        au bout d’un nombre fini d’op ́erations, l’algorithme s’arrˆete.
+    les algorithmes récursifs qui ne se terminent pas :
+        on peut imaginer que l’algorithme continue ” ́eternellement” de calculer.
+
+Structure de données :
+    Structure logique destinée à contenir les données
+
+Types de données abstraite
+    Description des fonctions admissibles sur les données
+    (et non pas directement sur les structures de données)
+
