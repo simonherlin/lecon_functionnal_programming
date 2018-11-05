@@ -67,3 +67,115 @@ Types de données abstraite
     Description des fonctions admissibles sur les données
     (et non pas directement sur les structures de données)
 
+
+Récursivité terminale
+
+    l’appel récursif fournit directement la valeur de retour
+    intérêt : coût mémoire constant (pas d’empilement des appels récursifs)
+    exemple de récursivité non-terminale (exemple précédent) :
+
+    taille :: [Int] -> Int
+    taille [] = 0
+    taille (x:xs) = 1 + (taille xs)
+
+    main = print $ taille [1..42]
+
+    exemple équivalent en récursivité terminale :
+
+    taille' :: [Int] -> Int -> Int
+    taille' [] n = n
+    taille' (x:xs) n = taille' xs (n+1)
+
+    main = print $ taille' [1..42] 0
+
+Savoir différencier une structure de donnée d’un type de donnée abstrait
+
+    Type de données abstraite (TDA)
+    Description des fonctions admissibles sur les données
+    (et non pas directement sur les structures de données)
+
+    Structure de données
+    Structure logique destinée à contenir les données
+
+    Une structure de données implémente un TDA
+
+Savoir définir le type de donnée abstrait liste
+
+    5 primitives sont nécessaire pour définir le TDA :
+    listeVide : () → liste
+        retourne la liste vide
+    listeCons : element × liste → liste
+        ajoute un  ́el ́ement `a une liste
+    listeTete : liste → element
+        retourne l’élément en tête de la liste (si elle n’est pas vide !)
+    listeQueue : liste → liste
+        retourne la queue de la liste (si elle n’est pas vide !)
+    listeEstVide? : liste → boolean
+        teste si la liste est vide
+
+
+Savoir utiliser les listes en Haskell
+
+    longueur :: [ a ] -> Int
+    longueur [] = 0
+    longueur (h:t) = longueur t + 1
+
+    mysum :: Num a => [ a ] -> a
+    mysum [] = 0
+    mysum (h:t) = mysum t + h
+
+    concatenationMots :: [ String ] -> String
+    concatenationMots [] = ""
+    concatenationMots (h:t) = h ++ concatenationMots t
+
+    pair :: Integral a => [ a ] -> [ a ]
+    pair [] = []
+    pair (h:t)  | mod h 2 == 0 = (h : (pair t))
+                | otherwise = pair t
+
+    myconcat :: [ a ] -> [ a ] -> [ a ]
+    myconcat [] l = l
+    myconcat (h:t) l = ( h : (myconcat t l) )
+
+    ajouter :: a -> Int -> [ a ] -> [ a ]
+    ajouter elem 0 l = (elem : l)
+    ajouter elem n (h:t) = (h : (ajouter elem (n-1) t))
+
+    supprimer :: Int -> [ a ] -> [ a ]
+    supprimer _ [] = []
+    supprimer 0 (h:t) = t
+    supprimer n (h:t) = ( h : (supprimer (n-1) t) )
+
+
+
+Connaitre le schéma r ́ecursif du traitement d’une liste
+    En haut
+
+Connaitre les algorithmes classiques relatifs aux listes
+    en haut
+Savoir ́ecrire une fonction de calcul avec accumulateur, 
+    de création, de modification, de filtre avec une liste
+    en haut
+
+Savoir définir une fonction anonyme
+
+    Fonction sans nom
+    simplifie l’usage des fonctions (par exemple, pour passer une fonction en paramètre…)
+    également appelé «lambda», en référence au lambda-calcul
+
+Savoir définir une fonction d'ordre supérieur
+
+    En mathématiques et en informatique, les fonctions d'ordre supérieur ou fonctionnelles sont des fonctions qui ont au moins une des propriétés suivantes :
+
+        elles prennent une ou plusieurs fonctions en entrée ;
+        elles renvoient une fonction.
+
+Savoir définir une fonction dont le résultat est une fonction
+
+    addOne =
+    \x -> x + 1
+    addOne 3
+    4
+
+Connaitre et savoir utiliser les fonctions d'ordre supérieur prédéfinie
+
