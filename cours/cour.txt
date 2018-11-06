@@ -26,14 +26,6 @@ Auto-referent: capable de parler de lui-même
 	Construction au cours de l’ex ́ecution
 
 
-
-
-
-
-
-
-
-
 Coeur du cours fonction d'ordre supérieur
 Pas de notion de temporairespas de notion d'instruction
 pas de modification
@@ -57,3 +49,14 @@ problème avec les lambda elles n'ont pas de nom on peut donc pas les rappeller 
 On peut passer des parametres en fonctione (fonction d'ordre surpérrieur) !!!
 
 On peut définir des fonction anonyme ce qui permet de définir des fonction dont le résultats est une fonction curryfication des fonctions cela peu etre une fermeture une fonciton et un environement d'execution
+
+
+
+Map reduce :
+Système de fichier HDFS (découpe en plusieur fichier sur différente ordinateur avec redondance)
+
+
+principe diviser le traiter
+  Déplace l'algo de traitement sur les noeuds de calcul (et non les données)
+  algorithme implement dans hadoop
+

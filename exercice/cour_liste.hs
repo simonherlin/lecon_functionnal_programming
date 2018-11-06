@@ -32,8 +32,8 @@ concatList :: [Int] -> [Int] -> [Int]
 concatList [] a = a
 concatList (h:t) a = h : (concatList t l)
 
-addItem :: Int -> Int -> [Int] -> [Int]
-addItem 
+--addItem :: Int -> Int -> [Int] -> [Int]
+--addItem 
 
 
 main = do
