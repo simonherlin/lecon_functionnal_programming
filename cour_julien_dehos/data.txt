@@ -70,7 +70,7 @@ Types de données abstraite
 
 Récursivité terminale
 
-    l’appel récursif fournit directement la valeur de retour
+     l’appel récursif fournit directement la valeur de retour
     intérêt : coût mémoire constant (pas d’empilement des appels récursifs)
     exemple de récursivité non-terminale (exemple précédent) :
 
