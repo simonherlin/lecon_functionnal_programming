@@ -69,20 +69,20 @@ bfsAlgo ((Node elem tl tr):tail) = elem : bfsAlgo (tail ++ [tl,tr])
 bfs t = bfsAlgo [t]
 
 -- TP
---maxInTree (Node elem tl tr)
---    | isLeaf (Node elem tl tr) = elem
---    | otherwise =  max (elem (maxInTree tl) (maxInTree tr))
-
---maxInTree a 
---    | isLeaf a = elem
---    | otherwise = max ((racine a) (maxInTree (left a)) (maxInTree (right b)))
-
-
 maxInTree Empty = 0
 maxInTree (Node elem Empty Empty) = elem
 maxInTree (Node elem lt Empty) = max elem (maxInTree lt)
 maxInTree (Node elem Empty rt) = max elem (maxInTree rt)
 maxInTree (Node elem lt rt) = max elem (max (maxInTree lt) (maxInTree rt))
+
+maxTreeOrdo Empty = 0
+maxTreeOrdo (Node elem Empty Empty) = elem
+maxTreeOrdo (Node elem Empty rt) = maxTreeOrdo rt
+maxTreeOrdo (Node elem lt Empty) = elem
+maxTreeOrdo (Node elem lt rt) = maxTreeOrdo rt
+
+maxT Empty m = m
+maxT (Node el lt rt) m = maxT lt (max rt (max el m))
 
 main = let
         a = treeCons 21 (treeCons 8  (treeCons 5 treeEmpty treeEmpty) treeEmpty) (treeCons 16 treeEmpty treeEmpty)
@@ -101,3 +101,4 @@ main = let
             print $ postfix a
             print $ bfs a
             print $ maxInTree a
+            print $ maxTreeOrdo a
