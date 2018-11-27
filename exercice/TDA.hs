@@ -1,4 +1,8 @@
 data Tree a = Empty | Node a (Tree a) (Tree a) deriving (Show)
+data Operator = Plus | Minus | Mult | Div deriving Show
+data Lexeme = Number Double | Op Operator | Var deriving Show
+
+leaf el = Node el Empty Empty
 
 isEmpty :: Tree a -> Bool
 isEmpty Empty = True
@@ -81,11 +85,31 @@ maxTreeOrdo (Node elem Empty rt) = maxTreeOrdo rt
 maxTreeOrdo (Node elem lt Empty) = elem
 maxTreeOrdo (Node elem lt rt) = maxTreeOrdo rt
 
-maxT Empty m = m
-maxT (Node el lt rt) m = maxT lt (max rt (max el m))
+--maxT Empty m = m
+--maxT (Node el lt rt) m = maxT lt (max rt (max el m))
+
+eval :: Tree Lexeme -> Double
+eval (Node (Number n) _ _) _ = n
+eval (Node (Var) _ _) x = x
+eval (Node (Op Mult) lr rt) x = (eval lr x) * (eval rt x)
+eval (Node (Op Div) lr rt) x = (eval lr x) / (eval rt x)
+eval (Node (Op Plus) lr rt) x = (eval lr x) + (eval rt x)
+eval (Node (Op Minus) lr rt) x = (eval lr x) - (eval rt x)
+
 
 main = let
         a = treeCons 21 (treeCons 8  (treeCons 5 treeEmpty treeEmpty) treeEmpty) (treeCons 16 treeEmpty treeEmpty)
+        b = treeCons (Op Plus) 
+                (treeCons (Op Mult) 
+                    (leaf (Number 12) )
+                    (treeCons (Op Minus) 
+                        (leaf (Number 56))
+                        (leaf (Number 11 ))))
+                (treeCons (Op Plus) 
+                    (leaf (Number 3))
+                    (leaf (Number 78)))
+        
+        
         in do
             print $ a
             print $ isEmpty a
@@ -102,3 +126,4 @@ main = let
             print $ bfs a
             print $ maxInTree a
             print $ maxTreeOrdo a
+            print $ b
