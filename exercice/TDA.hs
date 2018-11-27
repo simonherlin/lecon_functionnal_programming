@@ -53,6 +53,14 @@ prefix :: Tree a -> [a]
 prefix Empty = []
 prefix (Node elem tl tr) = elem:(prefix tl) ++ (prefix tr)
 
+infix2 :: Tree a -> [a]
+infix2 Empty = []
+infix2 (Node elem tl tr) = (infix2 tl) ++ (elem: (infix2 tr))
+
+postfix :: Tree a -> [a]
+postfix Empty = []
+postfix (Node elem tl tr) = (postfix tr) ++ (postfix tl) ++ [elem]
+
 main = let
         a = treeCons 21 (treeCons 8 treeEmpty treeEmpty) treeEmpty
         in do
@@ -65,3 +73,7 @@ main = let
             print $ search' 8 a
             print $ nbNode a
             print $ height a
+            print $ prefix a
+            print $ infix2 a
+            print $ postfix a
+            
