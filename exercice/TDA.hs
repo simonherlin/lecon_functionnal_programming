@@ -46,6 +46,13 @@ height :: Tree a -> Int
 height Empty = 0
 height (Node _ tl tr) = 1 + max (height tl) (height tr)
 
+someElem Empty = 0
+someElem (Node elem tl tr) = elem + (someElem tl) + (someElem tr)
+
+prefix :: Tree a -> [a]
+prefix Empty = []
+prefix (Node elem tl tr) = elem:(prefix tl) ++ (prefix tr)
+
 main = let
         a = treeCons 21 (treeCons 8 treeEmpty treeEmpty) treeEmpty
         in do
