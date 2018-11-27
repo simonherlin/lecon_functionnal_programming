@@ -61,8 +61,31 @@ postfix :: Tree a -> [a]
 postfix Empty = []
 postfix (Node elem tl tr) = (postfix tr) ++ (postfix tl) ++ [elem]
 
+--bfs :: Tree a -> [a]
+bfsAlgo [] = []
+bfsAlgo (Empty:tail) = bfsAlgo tail
+bfsAlgo ((Node elem tl tr):tail) = elem : bfsAlgo (tail ++ [tl,tr])
+
+bfs t = bfsAlgo [t]
+
+-- TP
+--maxInTree (Node elem tl tr)
+--    | isLeaf (Node elem tl tr) = elem
+--    | otherwise =  max (elem (maxInTree tl) (maxInTree tr))
+
+--maxInTree a 
+--    | isLeaf a = elem
+--    | otherwise = max ((racine a) (maxInTree (left a)) (maxInTree (right b)))
+
+
+maxInTree Empty = 0
+maxInTree (Node elem Empty Empty) = elem
+maxInTree (Node elem lt Empty) = max elem (maxInTree lt)
+maxInTree (Node elem Empty rt) = max elem (maxInTree rt)
+maxInTree (Node elem lt rt) = max elem (max (maxInTree lt) (maxInTree rt))
+
 main = let
-        a = treeCons 21 (treeCons 8 treeEmpty treeEmpty) treeEmpty
+        a = treeCons 21 (treeCons 8  (treeCons 5 treeEmpty treeEmpty) treeEmpty) (treeCons 16 treeEmpty treeEmpty)
         in do
             print $ a
             print $ isEmpty a
@@ -76,4 +99,5 @@ main = let
             print $ prefix a
             print $ infix2 a
             print $ postfix a
-            
+            print $ bfs a
+            print $ maxInTree a
