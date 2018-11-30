@@ -1,6 +1,6 @@
 data Tree a = Empty | Node a (Tree a) (Tree a) deriving (Show)
 data Operator = Plus | Minus | Mult | Div deriving Show
-data Lexeme = Number Double | Op Operator | Var deriving Show
+data Lexeme = Number Double | Op Operator | X | Var String deriving Show
 
 leaf el = Node el Empty Empty
 
@@ -88,13 +88,66 @@ maxTreeOrdo (Node elem lt rt) = maxTreeOrdo rt
 --maxT Empty m = m
 --maxT (Node el lt rt) m = maxT lt (max rt (max el m))
 
-eval :: Tree Lexeme -> Double
+--eval :: Tree Lexeme -> Double
 eval (Node (Number n) _ _) _ = n
-eval (Node (Var) _ _) x = x
+--eval (Node (Var) _ _) x = x
 eval (Node (Op Mult) lr rt) x = (eval lr x) * (eval rt x)
 eval (Node (Op Div) lr rt) x = (eval lr x) / (eval rt x)
 eval (Node (Op Plus) lr rt) x = (eval lr x) + (eval rt x)
 eval (Node (Op Minus) lr rt) x = (eval lr x) - (eval rt x)
+
+--assoc :: a -> [(a, b)] -> b
+--assoc y [] = error "not found"
+--assoc y ((key, value) : t) 
+--    | y == key = value
+--    | otherwise = assoc y t
+
+
+-- evalVar =(Node (Var name) Empty Empty) vars = assoc name vars
+
+
+-- recherche
+--searchItem :: Int -> Tree a -> Bool
+searchItem _ Empty = False
+searchItem x (Node elem tl tr)
+    | elem == x = True
+    | elem < x = searchItem x tl
+    | otherwise = searchItem x tr
+
+
+-- insert
+insertion x Empty = Node x Empty Empty
+insertion x (Node elem tl tr)
+    | x <= el = (Node elem (insertion x tl) tr)
+    | otherwise = (node elem tl (insertion tr))
+
+-- supression
+cutMax Empty = error "empty"
+cutMax (Node el tl Empty) = (ag, el)
+cutMax (Node el tl tr) = 
+    (Node el tl trcut, m)
+    where (trcut, m) = cutMax tr
+
+deleteEl _ Empty = error "empty"
+deleteEl x (Node el Empty tr)
+    | x == el = ad
+    | otherwise = Node el Empty (deleteEl x tr)
+deleteEl x (Node el tl tr)
+    | x < el = (Node el (deleteEl x tl) tr)
+    | x > el = (node el tl (deleteEl tr))
+    | otherwise = let (tlcut, m) = cutMax tl
+                    in (Node m tlcut tr)
+
+
+rl :: Tree a -> Tree a
+rl Empty = Empty
+rl (Node el tl tr) =
+    Node (racine tr) (Node el tl (left tr)) (Node right tr)
+
+rr :: Tree a -> Tree a
+rd Empty = Empty
+rd (Node el tl tr) =
+Node (racine tl) tl (Node e (right tl) tr)
 
 
 main = let
@@ -108,22 +161,32 @@ main = let
                 (treeCons (Op Plus) 
                     (leaf (Number 3))
                     (leaf (Number 78)))
-        
-        
+        c = treeCons 12
+                (treeCons 7 
+                    (treeCons 7 Empty Empty) 
+                    (treeCons 10 
+                        (treeCons 8 Empty Empty) 
+                        (treeCons 11 Empty Empty)) 
+                (treeCons 20 
+                    Empty 
+                    (treeCons 26 
+                        (treeCons 22 Empty Empty) 
+                        Empty))        
         in do
-            print $ a
-            print $ isEmpty a
-            print $ racine a
-            print $ left a
-            print $ right a
-            print $ search 8 a
-            print $ search' 8 a
-            print $ nbNode a
-            print $ height a
-            print $ prefix a
-            print $ infix2 a
-            print $ postfix a
-            print $ bfs a
-            print $ maxInTree a
-            print $ maxTreeOrdo a
-            print $ b
+            -- print $ a
+            --print $ isEmpty a
+            --print $ racine a
+            --print $ left a
+            --print $ right a
+            --print $ search 8 a
+            --print $ search' 8 a
+            --print $ nbNode a
+            --print $ height a
+            --print $ prefix a
+            --print $ infix2 a
+            --print $ postfix a
+            --print $ bfs a
+            --print $ maxInTree a
+            --print $ maxTreeOrdo a
+            --print $ eval b
+            print $ searchItem 8 c
