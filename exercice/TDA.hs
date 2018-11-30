@@ -147,8 +147,13 @@ rl (Node el tl tr) =
 rr :: Tree a -> Tree a
 rd Empty = Empty
 rd (Node el tl tr) =
-Node (racine tl) tl (Node e (right tl) tr)
+    Node (racine tl) (left tl) (Node el (right tl) tr)
 
+countT Empty a b = []
+countT (Node el tl tr) a b
+    | el < a = countT tr a b
+    | b < el = countT tl a b
+    | otherwise = el:(countT tl a b) ++ (countT tr a b)
 
 main = let
         a = treeCons 21 (treeCons 8  (treeCons 5 treeEmpty treeEmpty) treeEmpty) (treeCons 16 treeEmpty treeEmpty)
